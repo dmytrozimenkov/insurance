@@ -10,11 +10,16 @@ public class DB {
     private Connection  con;
     private Statement   stmt;
 
-    private static final String DB_URL     = "1";
-    private static final String DB_USER    = "";
+    private static final String DB_URL     = "jdbc:mysql://localhost:3306/insurance";
+    private static final String DB_USER    = "root";
     private static final String DB_PASS    = "";
 
     private boolean connection = false;
+
+    public static void main(String[] args){
+        DB db = new DB();
+        db.openConnection();
+    }
 
     public void openConnection(){
         if(!connection) {
