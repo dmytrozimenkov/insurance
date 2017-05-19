@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import sample.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller">
+   <children>
+      <Text layoutX="166.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="77.986572265625">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <CustomTextField fx:id="id_agent" layoutX="135.0" layoutY="80.0" prefHeight="25.0" prefWidth="150.0" promptText="id" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" />
+      <TextField fx:id="password" layoutX="134.0" layoutY="125.0" prefHeight="27.0" prefWidth="150.0" promptText="password" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" />
+   </children>
+</AnchorPane>
