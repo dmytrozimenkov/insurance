@@ -8,12 +8,11 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private WindowManager wm = WindowManager.getInstance();
+
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("view/Login.fxml"));
-        primaryStage.setTitle("Login");
-        primaryStage.setScene(new Scene(root, 190, 125));
-        primaryStage.show();
+        wm.createWindow("view/Login.fxml", "Вход", 190, 125);
     }
 
 
