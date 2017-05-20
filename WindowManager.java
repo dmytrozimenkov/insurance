@@ -43,8 +43,8 @@ public class WindowManager {
         }
     }
 
-    public void createAlert(String headerText, String contentText){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    public void createAlert(String headerText, String contentText, Alert.AlertType at){
+        Alert alert = new Alert(at);
         alert.setContentText(contentText);
         alert.setHeaderText(headerText);
         alert.initStyle(StageStyle.TRANSPARENT);

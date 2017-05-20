@@ -32,7 +32,7 @@ public class LoginController {
         ResultSet rs = db.query("SELECT id_agent, password FROM Agent WHERE id_agent = '" + login.getText() + "' AND password = '" + password.getText() + "'");
         try{
             if (!rs.isBeforeFirst() )
-                wm.createAlert("Ошибка входа", "Неправльный id или пароль");
+                wm.createAlert("Ошибка входа", "Неправльный id или пароль", Alert.AlertType.ERROR);
             else {
                 while (rs.next()) {
                     wm.createWindow("view/Window.fxml", "Window", 800, 600);
