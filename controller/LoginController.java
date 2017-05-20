@@ -1,4 +1,4 @@
-package sample;
+package sample.controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 
-public class Controller {
+public class LoginController {
 
     @FXML
     private TextField login;
