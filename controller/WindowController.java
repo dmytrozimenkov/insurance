@@ -10,6 +10,6 @@ public class WindowController {
     private WindowManager wm = WindowManager.getInstance();
 
     public void openNewButton(){
-        wm.createWindow("view/Window.fxml", "Window", 800, 600);
+        wm.createWindow("view/Window.fxml", "Window1", 800, 600);
     }
 }
