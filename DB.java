@@ -1,5 +1,6 @@
 package sample;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 
 /**
@@ -16,9 +17,17 @@ public class DB {
 
     private boolean connection = false;
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws SQLException{
         DB db = new DB();
         db.openConnection();
+        ResultSet rsTest = db.query("SELECT * FROM agent");
+        while(rsTest.next()){
+            System.out.println(rsTest.getInt(1));
+            System.out.println(rsTest.getString(2));
+            System.out.println(rsTest.getString(3));
+        }
+        rsTest.close();
+        db.closeConnection();
     }
 
     public void openConnection(){
@@ -35,16 +44,15 @@ public class DB {
     }
 
     public ResultSet query(String query){
-        ResultSet rs;
+        ResultSet rs = null;
         if(connection){
             try {
                 rs = stmt.executeQuery(query);
-                rs.close();
             } catch(SQLException ex) {
                 ex.printStackTrace();
             }
         }
-        return null;
+        return rs;
     }
 
     public void closeConnection(){
