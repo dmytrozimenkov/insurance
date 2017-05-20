@@ -10,7 +10,7 @@ public class DB {
     private Connection  con;
     private Statement   stmt;
 
-    private static final String DB_URL     = "";
+    private static final String DB_URL     = "1";
     private static final String DB_USER    = "";
     private static final String DB_PASS    = "";
 
