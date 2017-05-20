@@ -21,7 +21,15 @@ public class LoginController {
         DB db = new DB();
         db.openConnection();
         ResultSet rs = db.query("SELECT id_agent, password FROM Agent WHERE id_agent = '" + login.getText() + "' AND password = '" + password.getText() + "'");
-
+        try{
+            if (!rs.isBeforeFirst() ) {
+                System.out.println("No data");
+            } else {
+                while (rs.next()) {
+                    System.out.println(rs.getInt(1));
+                    System.out.println(rs.getString(2));
+                }
+            }
         } catch (SQLException ex){
             ex.printStackTrace();
         }
