@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -8,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import sample.controller.TestTableController;
 
 import java.io.IOException;
@@ -38,6 +40,11 @@ public class WindowManager {
                 stages.put(title, stage);
                 counter = 1;
             }
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+                public void handle(WindowEvent we) {
+                    stages.remove(title);
+                }
+            });
             stage.show();
         } catch(IOException ex){
             ex.printStackTrace();
@@ -47,19 +54,23 @@ public class WindowManager {
     public void createTableWindow(String tableName, String title, int cols){
         Stage stage = new Stage();
         try{
-            FXMLLoader loader = new FXMLLoader();
-            Parent parent = loader.load(getClass().getResource("view/TestTableWindow.fxml").openStream());
-            stage.setScene(new Scene(parent, 400, 300));
-            stage.setTitle(title);
             if(stages.containsKey(title))
-                stages.put(title + counter++, stage);
+                createAlert("Окно '" + title + "' уже открыто", "", Alert.AlertType.WARNING);
             else {
+                FXMLLoader loader = new FXMLLoader();
+                Parent parent = loader.load(getClass().getResource("view/TestTableWindow.fxml").openStream());
+                stage.setScene(new Scene(parent, 400, 300));
+                stage.setTitle(title);
                 stages.put(title, stage);
-                counter = 1;
+                TestTableController ttc = loader.getController();
+                ttc.buildTable(tableName, cols);
+                stage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+                    public void handle(WindowEvent we) {
+                        stages.remove(title);
+                    }
+                });
+                stage.show();
             }
-            TestTableController ttc = loader.getController();
-            ttc.buildTable(tableName, cols);
-            stage.show();
         } catch(IOException ex){
             ex.printStackTrace();
         }
