@@ -30,7 +30,7 @@ public class TableBuilder {
 
     private JSONArray parseTable(String tableName){
         try {
-            String json = readFile("src/sample/tables/" + tableName + ".json", StandardCharsets.UTF_8);
+            String json = readFile("src/sample/tables/json/" + tableName + ".json", StandardCharsets.UTF_8);
             JSONObject obj = new JSONObject(json);
             return obj.getJSONArray("columns");
         } catch(IOException ex){
