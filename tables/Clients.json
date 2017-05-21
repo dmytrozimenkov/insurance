@@ -1,0 +1,25 @@
+{
+    "columns":
+    [
+      {
+        "ID"    : 1,
+        "Name"  : "id_col",
+        "Title" : "ID"
+      },
+      {
+        "ID"    : 2,
+        "Name"  : "name_col",
+        "Title" : "ФИО"
+      },
+      {
+        "ID"    : 3,
+        "Name"  : "passport_col",
+        "Title" : "С/Н Паспорта"
+      },
+      {
+        "ID"    : 4,
+        "Name"  : "docs_col",
+        "Title" : "Договоры"
+      }
+    ]
+}
