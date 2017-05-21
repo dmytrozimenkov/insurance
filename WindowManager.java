@@ -1,13 +1,17 @@
 package sample;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import sample.controller.TestTableController;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 
 public class WindowManager {
@@ -40,6 +44,27 @@ public class WindowManager {
         }
     }
 
+    public void createTableWindow(String tableName, String title, int cols){
+        Stage stage = new Stage();
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            Parent parent = loader.load(getClass().getResource("view/TestTableWindow.fxml").openStream());
+            stage.setScene(new Scene(parent, 400, 300));
+            stage.setTitle(title);
+            if(stages.containsKey(title))
+                stages.put(title + counter++, stage);
+            else {
+                stages.put(title, stage);
+                counter = 1;
+            }
+            TestTableController ttc = loader.getController();
+            ttc.buildTable(tableName, cols);
+            stage.show();
+        } catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
+
     public void createAlert(String headerText, String contentText, Alert.AlertType at){
         Alert alert = new Alert(at);
         alert.setContentText(contentText);
@@ -54,5 +79,12 @@ public class WindowManager {
 
     public Stage getStage(String title){
         return stages.get(title);
+    }
+
+    public void closeAll(){
+        for(Stage stage : stages.values()){
+            stage.close();
+        }
+        createWindow("view/Login.fxml", "Вход", 190, 125);
     }
 }

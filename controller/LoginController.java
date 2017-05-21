@@ -39,6 +39,7 @@ public class LoginController {
                     wm.createWindow("view/Window.fxml", "Window", 800, 600);
                     System.out.println(rs.getInt(1));
                     System.out.println(rs.getString(2));
+                    wm.getStage("Вход").close();
                 }
             }
         } catch (SQLException ex) {
