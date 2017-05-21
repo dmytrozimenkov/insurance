@@ -7,6 +7,6 @@ public class WindowController {
     private WindowManager wm = WindowManager.getInstance();
 
     public void openNewButton(){
-        wm.createWindow("view/TestTableWindow.fxml", "Table", 800, 600);
+        wm.createWindow("view/TestTableWindow.fxml", "Table", 400, 300);
     }
 }

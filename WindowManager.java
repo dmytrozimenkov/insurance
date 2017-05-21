@@ -10,9 +10,6 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.HashMap;
 
-/**
- * Created by yolo on 20.05.17.
- */
 public class WindowManager {
 
     private static WindowManager instance;
