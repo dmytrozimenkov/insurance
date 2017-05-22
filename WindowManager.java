@@ -12,6 +12,7 @@ import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import sample.controller.TableController;
 import sample.controller.TestTableController;
+import sample.controller.WindowController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,6 +65,7 @@ public class WindowManager {
                 stage.setTitle(title);
                 stages.put(title, stage);
                 TableController ttc = loader.getController();
+
                 ttc.buildTable(tableName, cols);
                 stage.setOnCloseRequest(new EventHandler<WindowEvent>(){
                     public void handle(WindowEvent we) {
