@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
+import sample.controller.TableController;
 import sample.controller.TestTableController;
 
 import java.io.IOException;
@@ -58,11 +59,11 @@ public class WindowManager {
                 createAlert("Окно '" + title + "' уже открыто", "", Alert.AlertType.WARNING);
             else {
                 FXMLLoader loader = new FXMLLoader();
-                Parent parent = loader.load(getClass().getResource("view/TestTableWindow.fxml").openStream());
+                Parent parent = loader.load(getClass().getResource("view/TableWindow.fxml").openStream());
                 stage.setScene(new Scene(parent, 400, 300));
                 stage.setTitle(title);
                 stages.put(title, stage);
-                TestTableController ttc = loader.getController();
+                TableController ttc = loader.getController();
                 ttc.buildTable(tableName, cols);
                 stage.setOnCloseRequest(new EventHandler<WindowEvent>(){
                     public void handle(WindowEvent we) {

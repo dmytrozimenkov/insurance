@@ -3,23 +3,18 @@
     [
       {
         "ID"    : 1,
-        "Name"  : "id_col",
+        "Name"  : "id",
         "Title" : "ID"
       },
       {
         "ID"    : 2,
-        "Name"  : "name_col",
+        "Name"  : "name",
         "Title" : "ФИО"
       },
       {
         "ID"    : 3,
-        "Name"  : "passport_col",
+        "Name"  : "passport",
         "Title" : "С/Н Паспорта"
-      },
-      {
-        "ID"    : 4,
-        "Name"  : "docs_col",
-        "Title" : "Договоры"
       }
     ]
 }

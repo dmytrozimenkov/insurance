@@ -3,12 +3,12 @@
     [
       {
         "ID"    : 1,
-        "Name"  : "id_col",
+        "Name"  : "id",
         "Title" : "ID"
       },
       {
         "ID"    : 2,
-        "Name"  : "name_col",
+        "Name"  : "name",
         "Title" : "ФИО"
       }
     ]

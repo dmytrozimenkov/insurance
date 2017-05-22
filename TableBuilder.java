@@ -3,8 +3,10 @@ package sample;
 import com.sun.tools.javac.util.Name;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import sample.tables.data.Data;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -15,17 +17,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class TableBuilder {
+public class TableBuilder <T extends Data> {
 
     private HashMap<Integer, TableColumn> columnList = new HashMap<>();
 
-    public Object[] buildTable(String tableName, int columns){
+    public TableColumn<T, String>[] buildTable(String tableName, int columns){
         JSONArray colArray = parseTable(tableName);
+        TableColumn<T, String>[] cols = new TableColumn[columns];
         for(int i = 0; i < columns; i++){
-            columnList.put  (colArray.getJSONObject(i).getInt("ID"),
-                            new TableColumn(colArray.getJSONObject(i).getString("Title")));
+            TableColumn col = new TableColumn(colArray.getJSONObject(i).getString("Title"));
+            col.setCellValueFactory(new PropertyValueFactory<T, String>(colArray.getJSONObject(i).getString("Name")));
+            cols[i] = col;
         }
-        return columnList.values().toArray();
+        return cols;
     }
 
     private JSONArray parseTable(String tableName){
