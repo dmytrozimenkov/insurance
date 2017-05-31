@@ -13,6 +13,7 @@ import javafx.stage.WindowEvent;
 import sample.controller.TableController;
 import sample.controller.TestTableController;
 import sample.controller.WindowController;
+import sample.controller.addDataController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +37,35 @@ public class WindowManager {
             Parent parent = FXMLLoader.load(getClass().getResource(fxmlUrl));
             stage.setScene(new Scene(parent, width, height));
             stage.setTitle(title);
+            if(stages.containsKey(title))
+                stages.put(title + counter++, stage);
+            else {
+                stages.put(title, stage);
+                counter = 1;
+            }
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+                public void handle(WindowEvent we) {
+                    stages.remove(title);
+                }
+            });
+            stage.show();
+        } catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public void createAddWindow(String fxmlUrl, String title,int x){
+        Stage stage = new Stage();
+        try{
+           // int w = x*150;
+
+            FXMLLoader loader = new FXMLLoader();
+            Parent parent = loader.load(getClass().getResource(fxmlUrl).openStream());
+
+            stage.setScene(new Scene(parent));
+            stage.setTitle(title);
+            addDataController adc = loader.getController();
+            adc.test(x);
             if(stages.containsKey(title))
                 stages.put(title + counter++, stage);
             else {

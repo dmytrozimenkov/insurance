@@ -20,6 +20,9 @@ public class DB {
     public static void main(String[] args) throws SQLException{
         DB db = new DB();
         db.openConnection();
+       // db.stmt = db.con.createStatement();
+      //db.stmt.executeUpdate("INSERT INTO agent VALUES(null,'test','ttt','xxx','4');");
+        db.ins_query("INSERT INTO agent VALUES(null,'test','ttt','xxx','4');");
         ResultSet rsTest = db.query("SELECT * FROM agent");
         while(rsTest.next()){
             System.out.println(rsTest. getInt(1));
@@ -54,7 +57,17 @@ public class DB {
         }
         return rs;
     }
+    public void ins_query(String query){
 
+        try {
+            stmt = con.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+                }
     public void closeConnection(){
         if(connection) {
             try{

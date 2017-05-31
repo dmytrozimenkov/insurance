@@ -1,0 +1,25 @@
+{
+    "columns":
+    [
+      {
+        "ID"    : 1,
+        "Name"  : "id"
+      },
+      {
+        "ID"    : 2,
+        "Name"  : "first_name"
+      },
+      {
+        "ID"    : 3,
+        "Name"  : "second_name"
+      },
+      {
+        "ID"    : 4,
+        "Name"  : "surname"
+      },
+      {
+        "ID"    : 5,
+        "Name"  : "password"
+      }
+    ]
+}

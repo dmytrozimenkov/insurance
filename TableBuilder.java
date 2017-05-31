@@ -13,6 +13,9 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -20,6 +23,24 @@ import java.util.HashMap;
 public class TableBuilder <T extends Data> {
 
     private HashMap<Integer, TableColumn> columnList = new HashMap<>();
+    private WindowManager wm = WindowManager.getInstance();
+
+    public void bbb(String tableName, int columns) throws SQLException {
+        JSONArray colArray = parseTable(tableName);
+        int col = colArray.length();
+        for (int i=0;i<colArray.length();i++){
+           // System.out.println(colArray.getJSONObject(i));
+        }
+        wm.createAddWindow("view/addData.fxml", "add", col);
+//        DB db = new DB();
+//        db.openConnection();
+//        ResultSet rsTest = db.query("select count(*) from agent");
+//        rsTest.next();
+//        int count = rsTest.getInt(1);
+//        System.out.println(count);
+
+    }
+
 
     public TableColumn<T, String>[] buildTable(String tableName, int columns){
         JSONArray colArray = parseTable(tableName);

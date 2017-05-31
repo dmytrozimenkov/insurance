@@ -1,9 +1,10 @@
 package sample.controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import sample.DB;
 import sample.TableBuilder;
 import sample.WindowManager;
@@ -48,10 +49,37 @@ public class WindowController {
 
 
     public void add(){
-clearTable();
+//        for ( int i = 0; i<tableView.getItems().size(); i++) {
+//            tableView.getItems().clear();
+//        }
+//        data.removeAll();
+//        System.out.println(data.size());
+//
+//
+//clearTable();
+//        DB db = new DB();
+//        db.openConnection();
+//     //   db.ins_query("INSERT INTO agent VALUES(null,'test','ttt','xxx','4');");
+//        //db.ins_query("UPDATE agent set first_name = 'huiasdada' WHERE id_agent = 8;");
+//
+//        db.ins_query("INSERT INTO agent VALUES(null,'test','ttt','xxx','4');");
+//        db.closeConnection();
+//        tableView.getColumns().clear();
+//        buildTable("Agents",2);
+
+    TableBuilder tb = new TableBuilder();
+        try {
+            tb.bbb("Agents1",1);
+      //      tb.bbb("Clients",1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void remove() {
+    public void remove() throws SQLException {
+        TableBuilder tb = new TableBuilder();
+        tb.bbb("Agents1",1);
+
 
     }
 
